@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>2-нұсқа: Слайд-шоу</title>
+    <style>
+        /* Ашық градиентті фон */
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50; /* Қара емес, күңгірт мәтін */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* Слайдер контейнері */
+        .slider-box {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .slider-box:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Сурет стилі */
+        #slide {
+            width: 500px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        /* Батырма стилі */
+        .btn-next {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-next:hover {
+            background-color: #2980b9;
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.5);
+        }
+
+        .btn-next:active {
+            transform: scale(0.95);
+        }
+    </style>
+
+    <script>
+        // Суреттер массиві
+        var ris = ["car1.jpg", "car2.jpg", "car3.jpg", "car4.jpg"];
+        var i = 0; // Есептегіш
+
+        function nextSlide() {
+            i++; // Келесі суретке көшу
+            
+            // Егер массив соңына жетсе, басына қайта оралу
+            if (i >= ris.length) {
+                i = 0;
+            }
+            
+            // Суретті ауыстыру
+            document.getElementById('slide').src = ris[i];
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Көліктер галереясы</h1>
+
+    <div class="slider-box">
+        <img id="slide" src="car1.jpg" alt="Автокөлік">
+        
+        <div class="controls">
+            <input type="button" class="btn-next" value="Келесі сурет ➔" onClick="nextSlide()">
+        </div>
+    </div>
+
+    <p style="margin-top: 20px; font-style: italic; color: #7f8c8d;">
+        Батырманы басу арқылы келесі көлікті көре аласыз
+    </p>
+
+</body>
+</html>
